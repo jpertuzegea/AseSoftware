@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="xxqqModel3StoreContainer" CdmEntityContainer="xx2">
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="xxqqModel3.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="cliente_id" ColumnName="cliente_id" />
+          <ScalarProperty Name="num_identificacion" ColumnName="num_identificacion" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="factura">
+      <EntityTypeMapping TypeName="xxqqModel3.factura">
+        <MappingFragment StoreEntitySet="factura">
+          <ScalarProperty Name="factura_id" ColumnName="factura_id" />
+          <ScalarProperty Name="mecanico_id" ColumnName="mecanico_id" />
+          <ScalarProperty Name="cliente_id" ColumnName="cliente_id" />
+          <ScalarProperty Name="repuesto_servicio_id" ColumnName="repuesto_servicio_id" />
+          <ScalarProperty Name="valor_total" ColumnName="valor_total" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="fecha_emision" ColumnName="fecha_emision" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mecanico">
+      <EntityTypeMapping TypeName="xxqqModel3.mecanico">
+        <MappingFragment StoreEntitySet="mecanico">
+          <ScalarProperty Name="mecanico_id" ColumnName="mecanico_id" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="repuesto">
+      <EntityTypeMapping TypeName="xxqqModel3.repuesto">
+        <MappingFragment StoreEntitySet="repuesto">
+          <ScalarProperty Name="repuesto_id" ColumnName="repuesto_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="precio_unidad" ColumnName="precio_unidad" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="repuesto_servicio">
+      <EntityTypeMapping TypeName="xxqqModel3.repuesto_servicio">
+        <MappingFragment StoreEntitySet="repuesto_servicio">
+          <ScalarProperty Name="repuesto_servicio_id" ColumnName="repuesto_servicio_id" />
+          <ScalarProperty Name="repuesto_id" ColumnName="repuesto_id" />
+          <ScalarProperty Name="servicio_id" ColumnName="servicio_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="servicio">
+      <EntityTypeMapping TypeName="xxqqModel3.servicio">
+        <MappingFragment StoreEntitySet="servicio">
+          <ScalarProperty Name="servicio_id" ColumnName="servicio_id" />
+          <ScalarProperty Name="vehiculo_id" ColumnName="vehiculo_id" />
+          <ScalarProperty Name="descripcion_danno" ColumnName="descripcion_danno" />
+          <ScalarProperty Name="mecanico_id" ColumnName="mecanico_id" />
+          <ScalarProperty Name="presupuesto_arreglo" ColumnName="presupuesto_arreglo" />
+          <ScalarProperty Name="estimacion_tiempo_hrs" ColumnName="estimacion_tiempo_hrs" />
+          <ScalarProperty Name="estimacion_precio" ColumnName="estimacion_precio" />
+          <ScalarProperty Name="precio_mano_obra" ColumnName="precio_mano_obra" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="fecha_salida" ColumnName="fecha_salida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vehiculo">
+      <EntityTypeMapping TypeName="xxqqModel3.vehiculo">
+        <MappingFragment StoreEntitySet="vehiculo">
+          <ScalarProperty Name="vehiculo_id" ColumnName="vehiculo_id" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="modelo" ColumnName="modelo" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="anno" ColumnName="anno" />
+          <ScalarProperty Name="propietario_id" ColumnName="propietario_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_INS_CLIENTE" FunctionName="xxqqModel3.Store.SP_INS_CLIENTE" />
+    <FunctionImportMapping FunctionImportName="SP_INS_MECANICO" FunctionName="xxqqModel3.Store.SP_INS_MECANICO" />
+    <FunctionImportMapping FunctionImportName="SP_INS_REPUESTO" FunctionName="xxqqModel3.Store.SP_INS_REPUESTO" />
+    <FunctionImportMapping FunctionImportName="SP_INS_VEHICULO" FunctionName="xxqqModel3.Store.SP_INS_VEHICULO" />
+    <FunctionImportMapping FunctionImportName="SP_UPDT_CLIENTE" FunctionName="xxqqModel3.Store.SP_UPDT_CLIENTE" />
+    <FunctionImportMapping FunctionImportName="SP_UPDT_MECANICO" FunctionName="xxqqModel3.Store.SP_UPDT_MECANICO" />
+    <FunctionImportMapping FunctionImportName="SP_UPDT_REPUESTO" FunctionName="xxqqModel3.Store.SP_UPDT_REPUESTO" />
+    <FunctionImportMapping FunctionImportName="SP_UPDT_VEHICULO" FunctionName="xxqqModel3.Store.SP_UPDT_VEHICULO" />
+  </EntityContainerMapping>
+</Mapping>

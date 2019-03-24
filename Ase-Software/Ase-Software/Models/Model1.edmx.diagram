@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ddcfb3a613374c0e9502052fc5eafe81" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="SIGECORModel.cliente" Width="1.5" PointX="1.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIGECORModel.factura" Width="1.5" PointX="3.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIGECORModel.mecanico" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIGECORModel.repuesto" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIGECORModel.repuesto_servicio" Width="1.5" PointX="10.125" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIGECORModel.servicio" Width="1.5" PointX="7.625" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIGECORModel.vehiculo" Width="1.5" PointX="1.25" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="SIGECORModel.FK__factura__cliente__4FD1D5C8" ManuallyRouted="false" />
+        <AssociationConnector Association="SIGECORModel.FK__vehiculo__propie__4460231C" ManuallyRouted="false" />
+        <AssociationConnector Association="SIGECORModel.FK__factura__mecanic__4EDDB18F" ManuallyRouted="false" />
+        <AssociationConnector Association="SIGECORModel.FK__factura__repuest__50C5FA01" ManuallyRouted="false" />
+        <AssociationConnector Association="SIGECORModel.FK__servicio__mecani__4830B400" ManuallyRouted="false" />
+        <AssociationConnector Association="SIGECORModel.FK__repuesto___repue__4B0D20AB" ManuallyRouted="false" />
+        <AssociationConnector Association="SIGECORModel.FK__repuesto___servi__4C0144E4" ManuallyRouted="false" />
+        <AssociationConnector Association="SIGECORModel.FK__servicio__vehicu__473C8FC7" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

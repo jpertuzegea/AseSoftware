@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SIGECORModelStoreContainer" CdmEntityContainer="CAREntities">
+    <FunctionImportMapping FunctionImportName="SPR_INS_CLIENTE" FunctionName="SIGECORModel.Store.SPR_INS_CLIENTE" />
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="SIGECORModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="num_identificacion" ColumnName="num_identificacion" />
+          <ScalarProperty Name="cliente_id" ColumnName="cliente_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="factura">
+      <EntityTypeMapping TypeName="SIGECORModel.factura">
+        <MappingFragment StoreEntitySet="factura">
+          <ScalarProperty Name="fecha_emision" ColumnName="fecha_emision" />
+          <ScalarProperty Name="iva" ColumnName="iva" />
+          <ScalarProperty Name="valor_total" ColumnName="valor_total" />
+          <ScalarProperty Name="repuesto_servicio_id" ColumnName="repuesto_servicio_id" />
+          <ScalarProperty Name="cliente_id" ColumnName="cliente_id" />
+          <ScalarProperty Name="mecanico_id" ColumnName="mecanico_id" />
+          <ScalarProperty Name="factura_id" ColumnName="factura_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mecanico">
+      <EntityTypeMapping TypeName="SIGECORModel.mecanico">
+        <MappingFragment StoreEntitySet="mecanico">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="nombre_completo" ColumnName="nombre_completo" />
+          <ScalarProperty Name="mecanico_id" ColumnName="mecanico_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="repuesto">
+      <EntityTypeMapping TypeName="SIGECORModel.repuesto">
+        <MappingFragment StoreEntitySet="repuesto">
+          <ScalarProperty Name="stok" ColumnName="stok" />
+          <ScalarProperty Name="precio_unidad" ColumnName="precio_unidad" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="repuesto_id" ColumnName="repuesto_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="repuesto_servicio">
+      <EntityTypeMapping TypeName="SIGECORModel.repuesto_servicio">
+        <MappingFragment StoreEntitySet="repuesto_servicio">
+          <ScalarProperty Name="servicio_id" ColumnName="servicio_id" />
+          <ScalarProperty Name="repuesto_id" ColumnName="repuesto_id" />
+          <ScalarProperty Name="repuesto_servicio_id" ColumnName="repuesto_servicio_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="servicio">
+      <EntityTypeMapping TypeName="SIGECORModel.servicio">
+        <MappingFragment StoreEntitySet="servicio">
+          <ScalarProperty Name="fecha_salida" ColumnName="fecha_salida" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="precio_mano_obra" ColumnName="precio_mano_obra" />
+          <ScalarProperty Name="estimacion_precio" ColumnName="estimacion_precio" />
+          <ScalarProperty Name="estimacion_tiempo_hrs" ColumnName="estimacion_tiempo_hrs" />
+          <ScalarProperty Name="presupuesto_arreglo" ColumnName="presupuesto_arreglo" />
+          <ScalarProperty Name="mecanico_id" ColumnName="mecanico_id" />
+          <ScalarProperty Name="descripcion_danno" ColumnName="descripcion_danno" />
+          <ScalarProperty Name="vehiculo_id" ColumnName="vehiculo_id" />
+          <ScalarProperty Name="servicio_id" ColumnName="servicio_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vehiculo">
+      <EntityTypeMapping TypeName="SIGECORModel.vehiculo">
+        <MappingFragment StoreEntitySet="vehiculo">
+          <ScalarProperty Name="propietario_id" ColumnName="propietario_id" />
+          <ScalarProperty Name="anno" ColumnName="anno" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="modelo" ColumnName="modelo" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="vehiculo_id" ColumnName="vehiculo_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

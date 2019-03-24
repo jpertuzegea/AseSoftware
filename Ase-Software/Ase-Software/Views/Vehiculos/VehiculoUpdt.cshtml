@@ -1,0 +1,66 @@
+﻿@model Ase_Software.Models.vehiculo
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("VehiculoUpdt", "Vehiculos", FormMethod.Post, new { onsubmit = "return  validar_doble_clic()" }))
+{ // el return indica que la accion del formulario llega false cuando ya le han dado clic una vez
+
+
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.vehiculo_id)
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 style="color:#1ab394" class="modal-title">Formulario de Modificacion de Vehiculo</h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-sm-6 b-r">
+                <h3 class="m-t-none m-b"></h3>
+
+                <div class="form-group">
+                    <label>Marca</label>
+                    @Html.EditorFor(model => model.marca, new { htmlAttributes = new { @onkeyup = "UpperCase(this)", @class = "form-control" } })
+                </div>
+
+                <div class="form-group">
+                    <label>Modelo</label>
+                    @Html.EditorFor(model => model.modelo, new { htmlAttributes = new { @onkeyup = "UpperCase(this)", @class = "form-control" } })
+                </div>
+
+                <div class="form-group">
+                    <label>Color</label>
+                    @Html.EditorFor(model => model.color, new { htmlAttributes = new { @onkeyup = "UpperCase(this)", @class = "form-control" } })
+                </div>
+
+                <div class="form-group">
+                    <label>Año</label>
+                    @Html.EditorFor(model => model.anno, new { htmlAttributes = new { @onkeyup = "UpperCase(this)", @class = "form-control" } })
+                </div>
+
+
+                <div class="form-group">
+                    <label>Propietario</label>
+                    @Html.DropDownListFor(x => x.propietario_id, (IEnumerable<SelectListItem>)ViewBag.propietario, htmlAttributes: new { @class = "form-control" })
+                </div>
+
+
+
+
+            </div>
+
+            <div class="col-sm-6 ">
+                <br>
+
+
+            </div>
+            <div class="col-sm-4 ">      </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-sm btn-primary pull-right m-t-n-xs" id="boton" type="submit"><strong>Registrar</strong></button>
+    </div>
+}

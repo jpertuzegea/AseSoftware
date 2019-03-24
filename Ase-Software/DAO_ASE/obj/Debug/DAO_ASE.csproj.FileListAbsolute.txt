@@ -1,0 +1,11 @@
+C:\Users\JORGE_PERTUZ\Desktop\Ase-Software\DAO_ASE\bin\Debug\DAO_ASE.dll.config
+C:\Users\JORGE_PERTUZ\Desktop\Ase-Software\DAO_ASE\bin\Debug\DAO_ASE.dll
+C:\Users\JORGE_PERTUZ\Desktop\Ase-Software\DAO_ASE\bin\Debug\DAO_ASE.pdb
+C:\Users\JORGE_PERTUZ\Desktop\Ase-Software\DAO_ASE\bin\Debug\EntityFramework.dll
+C:\Users\JORGE_PERTUZ\Desktop\Ase-Software\DAO_ASE\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\JORGE_PERTUZ\Desktop\Ase-Software\DAO_ASE\bin\Debug\EntityFramework.xml
+C:\Users\JORGE_PERTUZ\Desktop\Ase-Software\DAO_ASE\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\JORGE_PERTUZ\Desktop\Ase-Software\DAO_ASE\obj\Debug\DAO_ASE.csproj.CoreCompileInputs.cache
+C:\Users\JORGE_PERTUZ\Desktop\Ase-Software\DAO_ASE\obj\Debug\DAO_ASE.csproj.CopyComplete
+C:\Users\JORGE_PERTUZ\Desktop\Ase-Software\DAO_ASE\obj\Debug\DAO_ASE.dll
+C:\Users\JORGE_PERTUZ\Desktop\Ase-Software\DAO_ASE\obj\Debug\DAO_ASE.pdb
