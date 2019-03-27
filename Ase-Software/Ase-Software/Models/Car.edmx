@@ -261,6 +261,7 @@
           <Parameter Name="STOCK" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_UPDT_SERVICIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SERVICIO_ID" Type="int" Mode="In" />
           <Parameter Name="VEHICULO_ID" Type="int" Mode="In" />
           <Parameter Name="DESCRIPCION_DANO" Type="varchar" Mode="In" />
           <Parameter Name="MECANICO_ID" Type="int" Mode="In" />
@@ -523,7 +524,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SIGECOREntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CarEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="cliente" EntityType="Self.cliente" />
           <EntitySet Name="factura" EntityType="Self.factura" />
           <EntitySet Name="mecanico" EntityType="Self.mecanico" />
@@ -639,6 +640,7 @@
             <Parameter Name="STOCK" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_UPDT_SERVICIO">
+            <Parameter Name="SERVICIO_ID" Mode="In" Type="Int32" />
             <Parameter Name="VEHICULO_ID" Mode="In" Type="Int32" />
             <Parameter Name="DESCRIPCION_DANO" Mode="In" Type="String" />
             <Parameter Name="MECANICO_ID" Mode="In" Type="Int32" />
@@ -665,7 +667,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SIGECORModelStoreContainer" CdmEntityContainer="SIGECOREntities">
+        <EntityContainerMapping StorageEntityContainer="SIGECORModelStoreContainer" CdmEntityContainer="CarEntities1">
           <EntitySetMapping Name="cliente">
             <EntityTypeMapping TypeName="SIGECORModel.cliente">
               <MappingFragment StoreEntitySet="cliente">

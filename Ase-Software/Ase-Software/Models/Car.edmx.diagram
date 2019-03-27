@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ddcfb3a613374c0e9502052fc5eafe81" Name="Diagram1" ZoomLevel="95">
-        <EntityTypeShape EntityType="SIGECORModel.cliente" Width="1.5" PointX="1.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIGECORModel.factura" Width="1.5" PointX="3.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIGECORModel.mecanico" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIGECORModel.repuesto" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIGECORModel.repuesto_servicio" Width="1.5" PointX="10.125" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIGECORModel.servicio" Width="1.5" PointX="7.625" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SIGECORModel.vehiculo" Width="1.5" PointX="1.25" PointY="8" IsExpanded="true" />
+      <Diagram DiagramId="5d23344b9c384a259e32c3d0aec57eeb" Name="Diagram1">
+        <EntityTypeShape EntityType="SIGECORModel.cliente" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIGECORModel.factura" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIGECORModel.mecanico" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIGECORModel.repuesto" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIGECORModel.repuesto_servicio" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIGECORModel.servicio" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIGECORModel.vehiculo" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
         <AssociationConnector Association="SIGECORModel.FK__factura__cliente__4FD1D5C8" ManuallyRouted="false" />
         <AssociationConnector Association="SIGECORModel.FK__vehiculo__propie__4460231C" ManuallyRouted="false" />
         <AssociationConnector Association="SIGECORModel.FK__factura__mecanic__4EDDB18F" ManuallyRouted="false" />

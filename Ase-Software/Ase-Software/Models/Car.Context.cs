@@ -15,10 +15,10 @@ namespace Ase_Software.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class SIGECOREntities : DbContext
+    public partial class CarEntities1 : DbContext
     {
-        public SIGECOREntities()
-            : base("name=SIGECOREntities")
+        public CarEntities1()
+            : base("name=CarEntities1")
         {
         }
     
@@ -308,8 +308,12 @@ namespace Ase_Software.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPDT_REPUESTO", rEPUESTO_IDParameter, nOMBREParameter, mARCAParameter, pRECIO_UNIDADParameter, sTOCKParameter);
         }
     
-        public virtual int SP_UPDT_SERVICIO(Nullable<int> vEHICULO_ID, string dESCRIPCION_DANO, Nullable<int> mECANICO_ID, Nullable<int> pRESUPESTO_ARREGLO, Nullable<int> eSTIMACION_TIEMPO_HRS, Nullable<int> eSTIMACION_PRECIO, Nullable<int> pRECIO_MANO_OBRA, byte[] fOTO, Nullable<System.DateTime> fECHA_INGRESO, Nullable<System.DateTime> fECHA_SALIDA, string eSTADO)
+        public virtual int SP_UPDT_SERVICIO(Nullable<int> sERVICIO_ID, Nullable<int> vEHICULO_ID, string dESCRIPCION_DANO, Nullable<int> mECANICO_ID, Nullable<int> pRESUPESTO_ARREGLO, Nullable<int> eSTIMACION_TIEMPO_HRS, Nullable<int> eSTIMACION_PRECIO, Nullable<int> pRECIO_MANO_OBRA, byte[] fOTO, Nullable<System.DateTime> fECHA_INGRESO, Nullable<System.DateTime> fECHA_SALIDA, string eSTADO)
         {
+            var sERVICIO_IDParameter = sERVICIO_ID.HasValue ?
+                new ObjectParameter("SERVICIO_ID", sERVICIO_ID) :
+                new ObjectParameter("SERVICIO_ID", typeof(int));
+    
             var vEHICULO_IDParameter = vEHICULO_ID.HasValue ?
                 new ObjectParameter("VEHICULO_ID", vEHICULO_ID) :
                 new ObjectParameter("VEHICULO_ID", typeof(int));
@@ -354,7 +358,7 @@ namespace Ase_Software.Models
                 new ObjectParameter("ESTADO", eSTADO) :
                 new ObjectParameter("ESTADO", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPDT_SERVICIO", vEHICULO_IDParameter, dESCRIPCION_DANOParameter, mECANICO_IDParameter, pRESUPESTO_ARREGLOParameter, eSTIMACION_TIEMPO_HRSParameter, eSTIMACION_PRECIOParameter, pRECIO_MANO_OBRAParameter, fOTOParameter, fECHA_INGRESOParameter, fECHA_SALIDAParameter, eSTADOParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_UPDT_SERVICIO", sERVICIO_IDParameter, vEHICULO_IDParameter, dESCRIPCION_DANOParameter, mECANICO_IDParameter, pRESUPESTO_ARREGLOParameter, eSTIMACION_TIEMPO_HRSParameter, eSTIMACION_PRECIOParameter, pRECIO_MANO_OBRAParameter, fOTOParameter, fECHA_INGRESOParameter, fECHA_SALIDAParameter, eSTADOParameter);
         }
     
         public virtual int SP_UPDT_VEHICULO(Nullable<int> vEHICULO_ID, string mARCA, string mODELO, string cOLOR, string aNNO, Nullable<int> pROPIETARIO)

@@ -13,7 +13,7 @@ namespace Ase_Software.Controllers
     public class ServiciosController : Controller
     {
         // GET: Servicios
-        private SIGECOREntities bd = new SIGECOREntities();
+        private CarEntities1 bd = new CarEntities1();
 
         public ActionResult Index()
         {
@@ -104,7 +104,7 @@ namespace Ase_Software.Controllers
             List<SelectListItem> lista_Meca = Selects.Armar_Select_Mecanicos();
             ViewBag.Mecanico = new SelectList(lista_Meca, "Value", "Text", servicio.mecanico_id);
             List<SelectListItem> lista_esta = Selects.list_estado();
-
+            ViewBag.descripcion_danno = servicio.descripcion_danno;
             ViewBag.estado = new SelectList(lista_esta, "Value", "Text", servicio.estado);
             return View(servicio);
         }
@@ -139,6 +139,7 @@ namespace Ase_Software.Controllers
 
                         // USANDO PROCEDIMIENTOS 
                         bd.SP_UPDT_SERVICIO(
+                        servicio.servicio_id,
                         servicio.vehiculo_id,
                         servicio.descripcion_danno,
                         servicio.mecanico_id,

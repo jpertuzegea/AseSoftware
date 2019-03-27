@@ -9,7 +9,7 @@ namespace Ase_Software.Varios
 {
     public static class Selects
     {
-        private static SIGECOREntities BD = new SIGECOREntities();
+        private static CarEntities1 BD = new CarEntities1();
 
         private static List<SelectListItem> estado = null;
         private static List<SelectListItem> sexo = null;

@@ -10,7 +10,7 @@ namespace Ase_Software.Controllers
     public class RepuestosController : Controller
     {
         // GET: Repuestos
-        private SIGECOREntities bd = new SIGECOREntities();
+        private CarEntities1 bd = new CarEntities1();
 
         public ActionResult Index()
         {

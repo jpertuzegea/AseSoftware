@@ -11,7 +11,7 @@ namespace Ase_Software.Controllers
 {
     public class ClientesController : Controller
     {
-        private SIGECOREntities bd = new SIGECOREntities();
+        private CarEntities1 bd = new CarEntities1();
 
 
         // GET: Clientes

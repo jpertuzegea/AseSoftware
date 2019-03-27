@@ -12,7 +12,7 @@ namespace Ase_Software.Controllers
     public class VehiculosController : Controller
     {
 
-        private SIGECOREntities bd = new SIGECOREntities();
+        private CarEntities1 bd = new CarEntities1();
         
         // GET: Vehiculos
         public ActionResult Index()

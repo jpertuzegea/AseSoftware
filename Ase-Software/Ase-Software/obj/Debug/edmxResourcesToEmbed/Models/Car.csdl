@@ -1,55 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SIGECORModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="CAREntities" annotation:LazyLoadingEnabled="true">
-    <FunctionImport Name="SPR_INS_CLIENTE">
-      <Parameter Name="PI_CCLI_CNOMBRE_COMPLETO" Mode="In" Type="String" />
-      <Parameter Name="PI_CCLI_CSEXO" Mode="In" Type="String" />
-      <Parameter Name="PI_CCLI_CTELEFONO" Mode="In" Type="String" />
-      <Parameter Name="PI_CCLI_CDIRECCION" Mode="In" Type="String" />
-      <Parameter Name="PI_CCLI_CCIUDAD" Mode="In" Type="String" />
-      <Parameter Name="PI_CCLI_CEMAIL" Mode="In" Type="String" />
-      <Parameter Name="PO_OCREADO" Mode="In" Type="Boolean" />
-    </FunctionImport>
-    <EntitySet Name="cliente" EntityType="SIGECORModel.cliente" />
-    <EntitySet Name="factura" EntityType="SIGECORModel.factura" />
-    <EntitySet Name="mecanico" EntityType="SIGECORModel.mecanico" />
-    <EntitySet Name="repuesto" EntityType="SIGECORModel.repuesto" />
-    <EntitySet Name="repuesto_servicio" EntityType="SIGECORModel.repuesto_servicio" />
-    <EntitySet Name="servicio" EntityType="SIGECORModel.servicio" />
-    <EntitySet Name="vehiculo" EntityType="SIGECORModel.vehiculo" />
-    <AssociationSet Name="FK__factura__cliente__59C55456" Association="SIGECORModel.FK__factura__cliente__59C55456">
-      <End Role="cliente" EntitySet="cliente" />
-      <End Role="factura" EntitySet="factura" />
-    </AssociationSet>
-    <AssociationSet Name="FK__vehiculo__propie__4E53A1AA" Association="SIGECORModel.FK__vehiculo__propie__4E53A1AA">
-      <End Role="cliente" EntitySet="cliente" />
-      <End Role="vehiculo" EntitySet="vehiculo" />
-    </AssociationSet>
-    <AssociationSet Name="FK__factura__mecanic__58D1301D" Association="SIGECORModel.FK__factura__mecanic__58D1301D">
-      <End Role="mecanico" EntitySet="mecanico" />
-      <End Role="factura" EntitySet="factura" />
-    </AssociationSet>
-    <AssociationSet Name="FK__factura__repuest__5AB9788F" Association="SIGECORModel.FK__factura__repuest__5AB9788F">
-      <End Role="repuesto_servicio" EntitySet="repuesto_servicio" />
-      <End Role="factura" EntitySet="factura" />
-    </AssociationSet>
-    <AssociationSet Name="FK__servicio__mecani__5224328E" Association="SIGECORModel.FK__servicio__mecani__5224328E">
-      <End Role="mecanico" EntitySet="mecanico" />
-      <End Role="servicio" EntitySet="servicio" />
-    </AssociationSet>
-    <AssociationSet Name="FK__repuesto___repue__55009F39" Association="SIGECORModel.FK__repuesto___repue__55009F39">
-      <End Role="repuesto" EntitySet="repuesto" />
-      <End Role="repuesto_servicio" EntitySet="repuesto_servicio" />
-    </AssociationSet>
-    <AssociationSet Name="FK__repuesto___servi__55F4C372" Association="SIGECORModel.FK__repuesto___servi__55F4C372">
-      <End Role="servicio" EntitySet="servicio" />
-      <End Role="repuesto_servicio" EntitySet="repuesto_servicio" />
-    </AssociationSet>
-    <AssociationSet Name="FK__servicio__vehicu__51300E55" Association="SIGECORModel.FK__servicio__vehicu__51300E55">
-      <End Role="vehiculo" EntitySet="vehiculo" />
-      <End Role="servicio" EntitySet="servicio" />
-    </AssociationSet>
-  </EntityContainer>
   <EntityType Name="cliente">
     <Key>
       <PropertyRef Name="cliente_id" />
@@ -62,8 +12,9 @@
     <Property Name="direccion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="ciudad" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="factura" Relationship="SIGECORModel.FK__factura__cliente__59C55456" FromRole="cliente" ToRole="factura" />
-    <NavigationProperty Name="vehiculo" Relationship="SIGECORModel.FK__vehiculo__propie__4E53A1AA" FromRole="cliente" ToRole="vehiculo" />
+    <Property Name="estado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="factura" Relationship="Self.FK__factura__cliente__4FD1D5C8" FromRole="cliente" ToRole="factura" />
+    <NavigationProperty Name="vehiculo" Relationship="Self.FK__vehiculo__propie__4460231C" FromRole="cliente" ToRole="vehiculo" />
   </EntityType>
   <EntityType Name="factura">
     <Key>
@@ -76,9 +27,9 @@
     <Property Name="valor_total" Type="Int32" />
     <Property Name="iva" Type="Int32" />
     <Property Name="fecha_emision" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="cliente" Relationship="SIGECORModel.FK__factura__cliente__59C55456" FromRole="factura" ToRole="cliente" />
-    <NavigationProperty Name="mecanico" Relationship="SIGECORModel.FK__factura__mecanic__58D1301D" FromRole="factura" ToRole="mecanico" />
-    <NavigationProperty Name="repuesto_servicio" Relationship="SIGECORModel.FK__factura__repuest__5AB9788F" FromRole="factura" ToRole="repuesto_servicio" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__factura__cliente__4FD1D5C8" FromRole="factura" ToRole="cliente" />
+    <NavigationProperty Name="mecanico" Relationship="Self.FK__factura__mecanic__4EDDB18F" FromRole="factura" ToRole="mecanico" />
+    <NavigationProperty Name="repuesto_servicio" Relationship="Self.FK__factura__repuest__50C5FA01" FromRole="factura" ToRole="repuesto_servicio" />
   </EntityType>
   <EntityType Name="mecanico">
     <Key>
@@ -86,12 +37,13 @@
     </Key>
     <Property Name="mecanico_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="nombre_completo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="estado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="sexo" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
     <Property Name="telefono" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
     <Property Name="direccion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="factura" Relationship="SIGECORModel.FK__factura__mecanic__58D1301D" FromRole="mecanico" ToRole="factura" />
-    <NavigationProperty Name="servicio" Relationship="SIGECORModel.FK__servicio__mecani__5224328E" FromRole="mecanico" ToRole="servicio" />
+    <NavigationProperty Name="factura" Relationship="Self.FK__factura__mecanic__4EDDB18F" FromRole="mecanico" ToRole="factura" />
+    <NavigationProperty Name="servicio" Relationship="Self.FK__servicio__mecani__4830B400" FromRole="mecanico" ToRole="servicio" />
   </EntityType>
   <EntityType Name="repuesto">
     <Key>
@@ -101,8 +53,8 @@
     <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="marca" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="precio_unidad" Type="Int32" />
-    <Property Name="stok" Type="Int32" />
-    <NavigationProperty Name="repuesto_servicio" Relationship="SIGECORModel.FK__repuesto___repue__55009F39" FromRole="repuesto" ToRole="repuesto_servicio" />
+    <Property Name="stock" Type="Int32" />
+    <NavigationProperty Name="repuesto_servicio" Relationship="Self.FK__repuesto___repue__4B0D20AB" FromRole="repuesto" ToRole="repuesto_servicio" />
   </EntityType>
   <EntityType Name="repuesto_servicio">
     <Key>
@@ -111,9 +63,9 @@
     <Property Name="repuesto_servicio_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="repuesto_id" Type="Int32" />
     <Property Name="servicio_id" Type="Int32" />
-    <NavigationProperty Name="factura" Relationship="SIGECORModel.FK__factura__repuest__5AB9788F" FromRole="repuesto_servicio" ToRole="factura" />
-    <NavigationProperty Name="repuesto" Relationship="SIGECORModel.FK__repuesto___repue__55009F39" FromRole="repuesto_servicio" ToRole="repuesto" />
-    <NavigationProperty Name="servicio" Relationship="SIGECORModel.FK__repuesto___servi__55F4C372" FromRole="repuesto_servicio" ToRole="servicio" />
+    <NavigationProperty Name="factura" Relationship="Self.FK__factura__repuest__50C5FA01" FromRole="repuesto_servicio" ToRole="factura" />
+    <NavigationProperty Name="repuesto" Relationship="Self.FK__repuesto___repue__4B0D20AB" FromRole="repuesto_servicio" ToRole="repuesto" />
+    <NavigationProperty Name="servicio" Relationship="Self.FK__repuesto___servi__4C0144E4" FromRole="repuesto_servicio" ToRole="servicio" />
   </EntityType>
   <EntityType Name="servicio">
     <Key>
@@ -130,9 +82,10 @@
     <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="fecha_ingreso" Type="DateTime" Precision="3" />
     <Property Name="fecha_salida" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="mecanico" Relationship="SIGECORModel.FK__servicio__mecani__5224328E" FromRole="servicio" ToRole="mecanico" />
-    <NavigationProperty Name="repuesto_servicio" Relationship="SIGECORModel.FK__repuesto___servi__55F4C372" FromRole="servicio" ToRole="repuesto_servicio" />
-    <NavigationProperty Name="vehiculo" Relationship="SIGECORModel.FK__servicio__vehicu__51300E55" FromRole="servicio" ToRole="vehiculo" />
+    <Property Name="estado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="mecanico" Relationship="Self.FK__servicio__mecani__4830B400" FromRole="servicio" ToRole="mecanico" />
+    <NavigationProperty Name="repuesto_servicio" Relationship="Self.FK__repuesto___servi__4C0144E4" FromRole="servicio" ToRole="repuesto_servicio" />
+    <NavigationProperty Name="vehiculo" Relationship="Self.FK__servicio__vehicu__473C8FC7" FromRole="servicio" ToRole="vehiculo" />
   </EntityType>
   <EntityType Name="vehiculo">
     <Key>
@@ -144,12 +97,12 @@
     <Property Name="color" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
     <Property Name="anno" Type="Int32" />
     <Property Name="propietario_id" Type="Int32" />
-    <NavigationProperty Name="cliente" Relationship="SIGECORModel.FK__vehiculo__propie__4E53A1AA" FromRole="vehiculo" ToRole="cliente" />
-    <NavigationProperty Name="servicio" Relationship="SIGECORModel.FK__servicio__vehicu__51300E55" FromRole="vehiculo" ToRole="servicio" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__vehiculo__propie__4460231C" FromRole="vehiculo" ToRole="cliente" />
+    <NavigationProperty Name="servicio" Relationship="Self.FK__servicio__vehicu__473C8FC7" FromRole="vehiculo" ToRole="servicio" />
   </EntityType>
-  <Association Name="FK__factura__cliente__59C55456">
-    <End Type="SIGECORModel.cliente" Role="cliente" Multiplicity="0..1" />
-    <End Type="SIGECORModel.factura" Role="factura" Multiplicity="*" />
+  <Association Name="FK__factura__cliente__4FD1D5C8">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="cliente">
         <PropertyRef Name="cliente_id" />
@@ -159,9 +112,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__vehiculo__propie__4E53A1AA">
-    <End Type="SIGECORModel.cliente" Role="cliente" Multiplicity="0..1" />
-    <End Type="SIGECORModel.vehiculo" Role="vehiculo" Multiplicity="*" />
+  <Association Name="FK__vehiculo__propie__4460231C">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="vehiculo" Type="Self.vehiculo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="cliente">
         <PropertyRef Name="cliente_id" />
@@ -171,9 +124,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__factura__mecanic__58D1301D">
-    <End Type="SIGECORModel.mecanico" Role="mecanico" Multiplicity="0..1" />
-    <End Type="SIGECORModel.factura" Role="factura" Multiplicity="*" />
+  <Association Name="FK__factura__mecanic__4EDDB18F">
+    <End Role="mecanico" Type="Self.mecanico" Multiplicity="0..1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="mecanico">
         <PropertyRef Name="mecanico_id" />
@@ -183,9 +136,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__factura__repuest__5AB9788F">
-    <End Type="SIGECORModel.repuesto_servicio" Role="repuesto_servicio" Multiplicity="1" />
-    <End Type="SIGECORModel.factura" Role="factura" Multiplicity="0..1" />
+  <Association Name="FK__factura__repuest__50C5FA01">
+    <End Role="repuesto_servicio" Type="Self.repuesto_servicio" Multiplicity="1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="repuesto_servicio">
         <PropertyRef Name="repuesto_servicio_id" />
@@ -195,9 +148,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__servicio__mecani__5224328E">
-    <End Type="SIGECORModel.mecanico" Role="mecanico" Multiplicity="0..1" />
-    <End Type="SIGECORModel.servicio" Role="servicio" Multiplicity="*" />
+  <Association Name="FK__servicio__mecani__4830B400">
+    <End Role="mecanico" Type="Self.mecanico" Multiplicity="0..1" />
+    <End Role="servicio" Type="Self.servicio" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="mecanico">
         <PropertyRef Name="mecanico_id" />
@@ -207,9 +160,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__repuesto___repue__55009F39">
-    <End Type="SIGECORModel.repuesto" Role="repuesto" Multiplicity="0..1" />
-    <End Type="SIGECORModel.repuesto_servicio" Role="repuesto_servicio" Multiplicity="*" />
+  <Association Name="FK__repuesto___repue__4B0D20AB">
+    <End Role="repuesto" Type="Self.repuesto" Multiplicity="0..1" />
+    <End Role="repuesto_servicio" Type="Self.repuesto_servicio" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="repuesto">
         <PropertyRef Name="repuesto_id" />
@@ -219,9 +172,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__repuesto___servi__55F4C372">
-    <End Type="SIGECORModel.servicio" Role="servicio" Multiplicity="0..1" />
-    <End Type="SIGECORModel.repuesto_servicio" Role="repuesto_servicio" Multiplicity="*" />
+  <Association Name="FK__repuesto___servi__4C0144E4">
+    <End Role="servicio" Type="Self.servicio" Multiplicity="0..1" />
+    <End Role="repuesto_servicio" Type="Self.repuesto_servicio" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="servicio">
         <PropertyRef Name="servicio_id" />
@@ -231,9 +184,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__servicio__vehicu__51300E55">
-    <End Type="SIGECORModel.vehiculo" Role="vehiculo" Multiplicity="0..1" />
-    <End Type="SIGECORModel.servicio" Role="servicio" Multiplicity="*" />
+  <Association Name="FK__servicio__vehicu__473C8FC7">
+    <End Role="vehiculo" Type="Self.vehiculo" Multiplicity="0..1" />
+    <End Role="servicio" Type="Self.servicio" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="vehiculo">
         <PropertyRef Name="vehiculo_id" />
@@ -243,4 +196,142 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityContainer Name="CarEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cliente" EntityType="Self.cliente" />
+    <EntitySet Name="factura" EntityType="Self.factura" />
+    <EntitySet Name="mecanico" EntityType="Self.mecanico" />
+    <EntitySet Name="repuesto" EntityType="Self.repuesto" />
+    <EntitySet Name="repuesto_servicio" EntityType="Self.repuesto_servicio" />
+    <EntitySet Name="servicio" EntityType="Self.servicio" />
+    <EntitySet Name="vehiculo" EntityType="Self.vehiculo" />
+    <AssociationSet Name="FK__factura__cliente__4FD1D5C8" Association="Self.FK__factura__cliente__4FD1D5C8">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__vehiculo__propie__4460231C" Association="Self.FK__vehiculo__propie__4460231C">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="vehiculo" EntitySet="vehiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__factura__mecanic__4EDDB18F" Association="Self.FK__factura__mecanic__4EDDB18F">
+      <End Role="mecanico" EntitySet="mecanico" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__factura__repuest__50C5FA01" Association="Self.FK__factura__repuest__50C5FA01">
+      <End Role="repuesto_servicio" EntitySet="repuesto_servicio" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__servicio__mecani__4830B400" Association="Self.FK__servicio__mecani__4830B400">
+      <End Role="mecanico" EntitySet="mecanico" />
+      <End Role="servicio" EntitySet="servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__repuesto___repue__4B0D20AB" Association="Self.FK__repuesto___repue__4B0D20AB">
+      <End Role="repuesto" EntitySet="repuesto" />
+      <End Role="repuesto_servicio" EntitySet="repuesto_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__repuesto___servi__4C0144E4" Association="Self.FK__repuesto___servi__4C0144E4">
+      <End Role="servicio" EntitySet="servicio" />
+      <End Role="repuesto_servicio" EntitySet="repuesto_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__servicio__vehicu__473C8FC7" Association="Self.FK__servicio__vehicu__473C8FC7">
+      <End Role="vehiculo" EntitySet="vehiculo" />
+      <End Role="servicio" EntitySet="servicio" />
+    </AssociationSet>
+    <FunctionImport Name="SP_INS_CLIENTE">
+      <Parameter Name="NUM_IDENTIFICACION" Mode="In" Type="String" />
+      <Parameter Name="NOMBRE_COMPLETO" Mode="In" Type="String" />
+      <Parameter Name="SEXO" Mode="In" Type="String" />
+      <Parameter Name="TELEFONO" Mode="In" Type="String" />
+      <Parameter Name="DIRECCION" Mode="In" Type="String" />
+      <Parameter Name="CIUDAD" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="ESTADO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_INS_MECANICO">
+      <Parameter Name="NOMBRE_COMPLETO" Mode="In" Type="String" />
+      <Parameter Name="ESTADO" Mode="In" Type="String" />
+      <Parameter Name="SEXO" Mode="In" Type="String" />
+      <Parameter Name="TELEFONO" Mode="In" Type="String" />
+      <Parameter Name="DIRECCION" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_INS_REPUESTO">
+      <Parameter Name="NOMBRE" Mode="In" Type="String" />
+      <Parameter Name="MARCA" Mode="In" Type="String" />
+      <Parameter Name="PRECIO_UNIDAD" Mode="In" Type="Int32" />
+      <Parameter Name="STOCK" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_INS_REPUESTO_SERVICIO">
+      <Parameter Name="REPUESTO_ID" Mode="In" Type="Int32" />
+      <Parameter Name="SERVICIO_ID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_INS_SERVICIO">
+      <Parameter Name="VEHICULO_ID" Mode="In" Type="Int32" />
+      <Parameter Name="DESCRIPCION_DANO" Mode="In" Type="String" />
+      <Parameter Name="MECANICO_ID" Mode="In" Type="Int32" />
+      <Parameter Name="PRESUPESTO_ARREGLO" Mode="In" Type="Int32" />
+      <Parameter Name="ESTIMACION_TIEMPO_HRS" Mode="In" Type="Int32" />
+      <Parameter Name="ESTIMACION_PRECIO" Mode="In" Type="Int32" />
+      <Parameter Name="PRECIO_MANO_OBRA" Mode="In" Type="Int32" />
+      <Parameter Name="FOTO" Mode="In" Type="Binary" />
+      <Parameter Name="FECHA_INGRESO" Mode="In" Type="DateTime" />
+      <Parameter Name="FECHA_SALIDA" Mode="In" Type="DateTime" />
+      <Parameter Name="ESTADO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_INS_VEHICULO">
+      <Parameter Name="MARCA" Mode="In" Type="String" />
+      <Parameter Name="MODELO" Mode="In" Type="String" />
+      <Parameter Name="COLOR" Mode="In" Type="String" />
+      <Parameter Name="ANNO" Mode="In" Type="String" />
+      <Parameter Name="PROPIETARIO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UPDT_CLIENTE">
+      <Parameter Name="CLIENTE_ID" Mode="In" Type="Int32" />
+      <Parameter Name="NUM_IDENTIFICACION" Mode="In" Type="String" />
+      <Parameter Name="NOMBRE_COMPLETO" Mode="In" Type="String" />
+      <Parameter Name="SEXO" Mode="In" Type="String" />
+      <Parameter Name="TELEFONO" Mode="In" Type="String" />
+      <Parameter Name="DIRECCION" Mode="In" Type="String" />
+      <Parameter Name="CIUDAD" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="ESTADO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UPDT_MECANICO">
+      <Parameter Name="MECANICO_ID" Mode="In" Type="Int32" />
+      <Parameter Name="NOMBRE_COMPLETO" Mode="In" Type="String" />
+      <Parameter Name="ESTADO" Mode="In" Type="String" />
+      <Parameter Name="SEXO" Mode="In" Type="String" />
+      <Parameter Name="TELEFONO" Mode="In" Type="String" />
+      <Parameter Name="DIRECCION" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UPDT_REPUESTO">
+      <Parameter Name="REPUESTO_ID" Mode="In" Type="Int32" />
+      <Parameter Name="NOMBRE" Mode="In" Type="String" />
+      <Parameter Name="MARCA" Mode="In" Type="String" />
+      <Parameter Name="PRECIO_UNIDAD" Mode="In" Type="Int32" />
+      <Parameter Name="STOCK" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UPDT_SERVICIO">
+      <Parameter Name="SERVICIO_ID" Mode="In" Type="Int32" />
+      <Parameter Name="VEHICULO_ID" Mode="In" Type="Int32" />
+      <Parameter Name="DESCRIPCION_DANO" Mode="In" Type="String" />
+      <Parameter Name="MECANICO_ID" Mode="In" Type="Int32" />
+      <Parameter Name="PRESUPESTO_ARREGLO" Mode="In" Type="Int32" />
+      <Parameter Name="ESTIMACION_TIEMPO_HRS" Mode="In" Type="Int32" />
+      <Parameter Name="ESTIMACION_PRECIO" Mode="In" Type="Int32" />
+      <Parameter Name="PRECIO_MANO_OBRA" Mode="In" Type="Int32" />
+      <Parameter Name="FOTO" Mode="In" Type="Binary" />
+      <Parameter Name="FECHA_INGRESO" Mode="In" Type="DateTime" />
+      <Parameter Name="FECHA_SALIDA" Mode="In" Type="DateTime" />
+      <Parameter Name="ESTADO" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UPDT_VEHICULO">
+      <Parameter Name="VEHICULO_ID" Mode="In" Type="Int32" />
+      <Parameter Name="MARCA" Mode="In" Type="String" />
+      <Parameter Name="MODELO" Mode="In" Type="String" />
+      <Parameter Name="COLOR" Mode="In" Type="String" />
+      <Parameter Name="ANNO" Mode="In" Type="String" />
+      <Parameter Name="PROPIETARIO" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
 </Schema>

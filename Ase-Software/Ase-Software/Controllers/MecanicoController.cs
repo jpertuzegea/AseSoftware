@@ -10,7 +10,7 @@ namespace Ase_Software.Controllers
 {
     public class MecanicoController : Controller
     {
-        private SIGECOREntities bd = new SIGECOREntities();
+        private CarEntities1 bd = new CarEntities1();
 
         // GET: Mecanios
         public ActionResult Index()

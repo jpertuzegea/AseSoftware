@@ -12,6 +12,7 @@
     <Property Name="direccion" Type="varchar" MaxLength="30" />
     <Property Name="ciudad" Type="varchar" MaxLength="30" />
     <Property Name="email" Type="varchar" MaxLength="30" />
+    <Property Name="estado" Type="varchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="factura">
     <Key>
@@ -31,6 +32,7 @@
     </Key>
     <Property Name="mecanico_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="nombre_completo" Type="varchar" MaxLength="30" />
+    <Property Name="estado" Type="varchar" MaxLength="30" />
     <Property Name="sexo" Type="varchar" MaxLength="7" />
     <Property Name="telefono" Type="varchar" MaxLength="12" />
     <Property Name="direccion" Type="varchar" MaxLength="30" />
@@ -44,7 +46,7 @@
     <Property Name="nombre" Type="varchar" MaxLength="30" />
     <Property Name="marca" Type="varchar" MaxLength="30" />
     <Property Name="precio_unidad" Type="int" />
-    <Property Name="stok" Type="int" />
+    <Property Name="stock" Type="int" />
   </EntityType>
   <EntityType Name="repuesto_servicio">
     <Key>
@@ -69,6 +71,7 @@
     <Property Name="foto" Type="varbinary(max)" />
     <Property Name="fecha_ingreso" Type="datetime" />
     <Property Name="fecha_salida" Type="datetime" />
+    <Property Name="estado" Type="varchar" MaxLength="30" />
   </EntityType>
   <EntityType Name="vehiculo">
     <Key>
@@ -81,7 +84,7 @@
     <Property Name="anno" Type="int" />
     <Property Name="propietario_id" Type="int" />
   </EntityType>
-  <Association Name="FK__factura__cliente__59C55456">
+  <Association Name="FK__factura__cliente__4FD1D5C8">
     <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
     <End Role="factura" Type="Self.factura" Multiplicity="*" />
     <ReferentialConstraint>
@@ -93,7 +96,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__factura__mecanic__58D1301D">
+  <Association Name="FK__factura__mecanic__4EDDB18F">
     <End Role="mecanico" Type="Self.mecanico" Multiplicity="0..1" />
     <End Role="factura" Type="Self.factura" Multiplicity="*" />
     <ReferentialConstraint>
@@ -105,7 +108,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__factura__repuest__5AB9788F">
+  <Association Name="FK__factura__repuest__50C5FA01">
     <End Role="repuesto_servicio" Type="Self.repuesto_servicio" Multiplicity="1" />
     <End Role="factura" Type="Self.factura" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -117,7 +120,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__repuesto___repue__55009F39">
+  <Association Name="FK__repuesto___repue__4B0D20AB">
     <End Role="repuesto" Type="Self.repuesto" Multiplicity="0..1" />
     <End Role="repuesto_servicio" Type="Self.repuesto_servicio" Multiplicity="*" />
     <ReferentialConstraint>
@@ -129,7 +132,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__repuesto___servi__55F4C372">
+  <Association Name="FK__repuesto___servi__4C0144E4">
     <End Role="servicio" Type="Self.servicio" Multiplicity="0..1" />
     <End Role="repuesto_servicio" Type="Self.repuesto_servicio" Multiplicity="*" />
     <ReferentialConstraint>
@@ -141,7 +144,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__servicio__mecani__5224328E">
+  <Association Name="FK__servicio__mecani__4830B400">
     <End Role="mecanico" Type="Self.mecanico" Multiplicity="0..1" />
     <End Role="servicio" Type="Self.servicio" Multiplicity="*" />
     <ReferentialConstraint>
@@ -153,7 +156,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__servicio__vehicu__51300E55">
+  <Association Name="FK__servicio__vehicu__473C8FC7">
     <End Role="vehiculo" Type="Self.vehiculo" Multiplicity="0..1" />
     <End Role="servicio" Type="Self.servicio" Multiplicity="*" />
     <ReferentialConstraint>
@@ -165,7 +168,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__vehiculo__propie__4E53A1AA">
+  <Association Name="FK__vehiculo__propie__4460231C">
     <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
     <End Role="vehiculo" Type="Self.vehiculo" Multiplicity="*" />
     <ReferentialConstraint>
@@ -177,14 +180,102 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="SPR_INS_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="PI_CCLI_CNOMBRE_COMPLETO" Type="varchar" Mode="In" />
-    <Parameter Name="PI_CCLI_CSEXO" Type="varchar" Mode="In" />
-    <Parameter Name="PI_CCLI_CTELEFONO" Type="varchar" Mode="In" />
-    <Parameter Name="PI_CCLI_CDIRECCION" Type="varchar" Mode="In" />
-    <Parameter Name="PI_CCLI_CCIUDAD" Type="varchar" Mode="In" />
-    <Parameter Name="PI_CCLI_CEMAIL" Type="varchar" Mode="In" />
-    <Parameter Name="PO_OCREADO" Type="bit" Mode="In" />
+  <Function Name="SP_INS_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NUM_IDENTIFICACION" Type="varchar" Mode="In" />
+    <Parameter Name="NOMBRE_COMPLETO" Type="varchar" Mode="In" />
+    <Parameter Name="SEXO" Type="varchar" Mode="In" />
+    <Parameter Name="TELEFONO" Type="varchar" Mode="In" />
+    <Parameter Name="DIRECCION" Type="varchar" Mode="In" />
+    <Parameter Name="CIUDAD" Type="varchar" Mode="In" />
+    <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+    <Parameter Name="ESTADO" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_INS_MECANICO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NOMBRE_COMPLETO" Type="varchar" Mode="In" />
+    <Parameter Name="ESTADO" Type="varchar" Mode="In" />
+    <Parameter Name="SEXO" Type="varchar" Mode="In" />
+    <Parameter Name="TELEFONO" Type="varchar" Mode="In" />
+    <Parameter Name="DIRECCION" Type="varchar" Mode="In" />
+    <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_INS_REPUESTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+    <Parameter Name="MARCA" Type="varchar" Mode="In" />
+    <Parameter Name="PRECIO_UNIDAD" Type="int" Mode="In" />
+    <Parameter Name="STOCK" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_INS_REPUESTO_SERVICIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="REPUESTO_ID" Type="int" Mode="In" />
+    <Parameter Name="SERVICIO_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_INS_SERVICIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VEHICULO_ID" Type="int" Mode="In" />
+    <Parameter Name="DESCRIPCION_DANO" Type="varchar" Mode="In" />
+    <Parameter Name="MECANICO_ID" Type="int" Mode="In" />
+    <Parameter Name="PRESUPESTO_ARREGLO" Type="int" Mode="In" />
+    <Parameter Name="ESTIMACION_TIEMPO_HRS" Type="int" Mode="In" />
+    <Parameter Name="ESTIMACION_PRECIO" Type="int" Mode="In" />
+    <Parameter Name="PRECIO_MANO_OBRA" Type="int" Mode="In" />
+    <Parameter Name="FOTO" Type="varbinary(max)" Mode="In" />
+    <Parameter Name="FECHA_INGRESO" Type="datetime" Mode="In" />
+    <Parameter Name="FECHA_SALIDA" Type="datetime" Mode="In" />
+    <Parameter Name="ESTADO" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_INS_VEHICULO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MARCA" Type="varchar" Mode="In" />
+    <Parameter Name="MODELO" Type="varchar" Mode="In" />
+    <Parameter Name="COLOR" Type="varchar" Mode="In" />
+    <Parameter Name="ANNO" Type="varchar" Mode="In" />
+    <Parameter Name="PROPIETARIO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_UPDT_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CLIENTE_ID" Type="int" Mode="In" />
+    <Parameter Name="NUM_IDENTIFICACION" Type="varchar" Mode="In" />
+    <Parameter Name="NOMBRE_COMPLETO" Type="varchar" Mode="In" />
+    <Parameter Name="SEXO" Type="varchar" Mode="In" />
+    <Parameter Name="TELEFONO" Type="varchar" Mode="In" />
+    <Parameter Name="DIRECCION" Type="varchar" Mode="In" />
+    <Parameter Name="CIUDAD" Type="varchar" Mode="In" />
+    <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+    <Parameter Name="ESTADO" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_UPDT_MECANICO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MECANICO_ID" Type="int" Mode="In" />
+    <Parameter Name="NOMBRE_COMPLETO" Type="varchar" Mode="In" />
+    <Parameter Name="ESTADO" Type="varchar" Mode="In" />
+    <Parameter Name="SEXO" Type="varchar" Mode="In" />
+    <Parameter Name="TELEFONO" Type="varchar" Mode="In" />
+    <Parameter Name="DIRECCION" Type="varchar" Mode="In" />
+    <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_UPDT_REPUESTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="REPUESTO_ID" Type="int" Mode="In" />
+    <Parameter Name="NOMBRE" Type="varchar" Mode="In" />
+    <Parameter Name="MARCA" Type="varchar" Mode="In" />
+    <Parameter Name="PRECIO_UNIDAD" Type="int" Mode="In" />
+    <Parameter Name="STOCK" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_UPDT_SERVICIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SERVICIO_ID" Type="int" Mode="In" />
+    <Parameter Name="VEHICULO_ID" Type="int" Mode="In" />
+    <Parameter Name="DESCRIPCION_DANO" Type="varchar" Mode="In" />
+    <Parameter Name="MECANICO_ID" Type="int" Mode="In" />
+    <Parameter Name="PRESUPESTO_ARREGLO" Type="int" Mode="In" />
+    <Parameter Name="ESTIMACION_TIEMPO_HRS" Type="int" Mode="In" />
+    <Parameter Name="ESTIMACION_PRECIO" Type="int" Mode="In" />
+    <Parameter Name="PRECIO_MANO_OBRA" Type="int" Mode="In" />
+    <Parameter Name="FOTO" Type="varbinary(max)" Mode="In" />
+    <Parameter Name="FECHA_INGRESO" Type="datetime" Mode="In" />
+    <Parameter Name="FECHA_SALIDA" Type="datetime" Mode="In" />
+    <Parameter Name="ESTADO" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_UPDT_VEHICULO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VEHICULO_ID" Type="int" Mode="In" />
+    <Parameter Name="MARCA" Type="varchar" Mode="In" />
+    <Parameter Name="MODELO" Type="varchar" Mode="In" />
+    <Parameter Name="COLOR" Type="varchar" Mode="In" />
+    <Parameter Name="ANNO" Type="varchar" Mode="In" />
+    <Parameter Name="PROPIETARIO" Type="int" Mode="In" />
   </Function>
   <EntityContainer Name="SIGECORModelStoreContainer">
     <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
@@ -194,35 +285,35 @@
     <EntitySet Name="repuesto_servicio" EntityType="Self.repuesto_servicio" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vehiculo" EntityType="Self.vehiculo" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__factura__cliente__59C55456" Association="Self.FK__factura__cliente__59C55456">
+    <AssociationSet Name="FK__factura__cliente__4FD1D5C8" Association="Self.FK__factura__cliente__4FD1D5C8">
       <End Role="cliente" EntitySet="cliente" />
       <End Role="factura" EntitySet="factura" />
     </AssociationSet>
-    <AssociationSet Name="FK__factura__mecanic__58D1301D" Association="Self.FK__factura__mecanic__58D1301D">
+    <AssociationSet Name="FK__factura__mecanic__4EDDB18F" Association="Self.FK__factura__mecanic__4EDDB18F">
       <End Role="mecanico" EntitySet="mecanico" />
       <End Role="factura" EntitySet="factura" />
     </AssociationSet>
-    <AssociationSet Name="FK__factura__repuest__5AB9788F" Association="Self.FK__factura__repuest__5AB9788F">
+    <AssociationSet Name="FK__factura__repuest__50C5FA01" Association="Self.FK__factura__repuest__50C5FA01">
       <End Role="repuesto_servicio" EntitySet="repuesto_servicio" />
       <End Role="factura" EntitySet="factura" />
     </AssociationSet>
-    <AssociationSet Name="FK__repuesto___repue__55009F39" Association="Self.FK__repuesto___repue__55009F39">
+    <AssociationSet Name="FK__repuesto___repue__4B0D20AB" Association="Self.FK__repuesto___repue__4B0D20AB">
       <End Role="repuesto" EntitySet="repuesto" />
       <End Role="repuesto_servicio" EntitySet="repuesto_servicio" />
     </AssociationSet>
-    <AssociationSet Name="FK__repuesto___servi__55F4C372" Association="Self.FK__repuesto___servi__55F4C372">
+    <AssociationSet Name="FK__repuesto___servi__4C0144E4" Association="Self.FK__repuesto___servi__4C0144E4">
       <End Role="servicio" EntitySet="servicio" />
       <End Role="repuesto_servicio" EntitySet="repuesto_servicio" />
     </AssociationSet>
-    <AssociationSet Name="FK__servicio__mecani__5224328E" Association="Self.FK__servicio__mecani__5224328E">
+    <AssociationSet Name="FK__servicio__mecani__4830B400" Association="Self.FK__servicio__mecani__4830B400">
       <End Role="mecanico" EntitySet="mecanico" />
       <End Role="servicio" EntitySet="servicio" />
     </AssociationSet>
-    <AssociationSet Name="FK__servicio__vehicu__51300E55" Association="Self.FK__servicio__vehicu__51300E55">
+    <AssociationSet Name="FK__servicio__vehicu__473C8FC7" Association="Self.FK__servicio__vehicu__473C8FC7">
       <End Role="vehiculo" EntitySet="vehiculo" />
       <End Role="servicio" EntitySet="servicio" />
     </AssociationSet>
-    <AssociationSet Name="FK__vehiculo__propie__4E53A1AA" Association="Self.FK__vehiculo__propie__4E53A1AA">
+    <AssociationSet Name="FK__vehiculo__propie__4460231C" Association="Self.FK__vehiculo__propie__4460231C">
       <End Role="cliente" EntitySet="cliente" />
       <End Role="vehiculo" EntitySet="vehiculo" />
     </AssociationSet>

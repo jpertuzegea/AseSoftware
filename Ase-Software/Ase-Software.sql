@@ -591,6 +591,7 @@ if exists( select o.name from sys.objects o where o.name='SP_UPDT_SERVICIO' )
        end
 go
 create procedure SP_UPDT_SERVICIO
+@SERVICIO_ID INT,
 @VEHICULO_ID INT,
 @DESCRIPCION_DANO VARCHAR(200), 
 @MECANICO_ID INT, 
@@ -609,7 +610,7 @@ AUTOR: JORGE PERTUZ EGEA
 FECHA: 2019/03/23
 */
 BEGIN
- UPDATE servicio SET 
+UPDATE servicio SET 
 vehiculo_id = @VEHICULO_ID,
 descripcion_danno = @DESCRIPCION_DANO,
 mecanico_id = @MECANICO_ID,
@@ -621,7 +622,7 @@ foto = @FOTO,
 fecha_ingreso = @FECHA_INGRESO,
 fecha_salida = @FECHA_SALIDA,
 estado = @ESTADO
-WHERE servicio_id = @VEHICULO_ID
+WHERE servicio_id = @SERVICIO_ID
        
        IF @@ERROR = 0
              return 1
